@@ -1,14 +1,637 @@
-</div>
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYIK - Gyakran Ismételt Kérdések - Okossarok</title>
+    <meta name="description" content="Gyakran ismételt kérdések laptop és mobiltelefon javításról. Minden tudnivaló a javításról, árakról és szolgáltatásokról.">
+    <style>
+/* === Inlined from styles.css on 2025-08-18 12:35:48 === */
+/* Reset és alapvető beállítások */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigáció */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    color: #2563eb;
+}
+
+.nav-logo img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2563eb;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #2563eb;
+}
+
+.nav-link.webshop {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.nav-link.webshop:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(217, 119, 6, 0.4);
+}
+
+.nav-link.webshop::before {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: all 0.3s ease;
+}
+
+/* Page Header */
+.page-header {
+    padding: 120px 0 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+/* FAQ Styles */
+.faq-section {
+    padding: 80px 0;
+    background: #f8fafc;
+}
+
+.faq-category {
+    margin-bottom: 60px;
+}
+
+.faq-category h2 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #2563eb;
+}
+
+.faq-category h2 i {
+    color: #2563eb;
+    margin-right: 15px;
+}
+
+.faq-list {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    padding: 25px 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.faq-question:hover {
+    background: #f8fafc;
+}
+
+.faq-question h3 {
+    font-size: 1.2rem;
+    color: #1e293b;
+    margin: 0;
+    flex: 1;
+    padding-right: 20px;
+}
+
+.faq-question i {
+    color: #2563eb;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: #f8fafc;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 0 30px 25px 30px;
+}
+
+.faq-answer p {
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0;
+    padding-top: 15px;
+}
+
+.faq-cta {
+    padding: 80px 0;
+    background: #1e293b;
+    color: white;
+    text-align: center;
+}
+
+.faq-cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.faq-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Gombok */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    background: #0f172a;
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: start;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    margin-bottom: 20px;
+    color: #2563eb;
+}
+
+.footer-section p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    opacity: 1;
+    color: #2563eb;
+}
+
+.contact-info {
+    display: block;
+}
+
+.contact-info p {
+    margin-bottom: 12px;
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-info p i {
+    color: #2563eb;
+    min-width: 16px;
+    flex-shrink: 0;
+}
+
+.opening-hours p {
+    margin-bottom: 8px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: #2563eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #334155;
+    opacity: 0.7;
+}
+
+/* Active navigation link */
+.nav-link.active {
+    color: #2563eb;
+}
+
+.nav-link.active::before {
+    width: 100%;
+}
+
+/* Animációk */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .faq-question {
+        padding: 20px;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 0 20px 20px 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: left;
+    }
+
+    .nav-logo img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .footer-content {
+        gap: 25px;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+
+    .contact-info p {
+        font-size: 0.9rem;
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .opening-hours p {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+
+    .social-links a {
+        width: 35px;
+        height: 35px;
+    }
+}
+</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="logo.png" alt="Okossarok Logo">
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Főoldal</a></li>
+                <li><a href="https://laptopmobilshop.hu" class="nav-link webshop">🛒 Webshop</a></li>
+                <li><a href="szolgaltatasok.html" class="nav-link">Szolgáltatások</a></li>
+                <li><a href="arlista.html" class="nav-link">Árlista</a></li>
+                <li><a href="rolunk.html" class="nav-link">Rólunk</a></li>
+                <li><a href="gyik.html" class="nav-link active">GYIK</a></li>
+                <li><a href="kapcsolat.html" class="nav-link">Kapcsolat</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Gyakran Ismételt Kérdések (GYIK)</h1>
+            <p>Találd meg a választ a leggyakoribb kérdéseidre laptop és mobiltelefon javítással kapcsolatban.</p>
+        </div>
+    </header>
+
+    <section class="faq-section">
+        <div class="container">
+            <!-- Laptop FAQ -->
+            <div class="faq-category">
+                <h2><i class="fas fa-laptop"></i> Laptop javítás</h2>
+                <div class="faq-list">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>A laptop nem kapcsol be. Mi lehet a baj?</h3>
+                            <h3>Laptop nem kapcsol be. Mi lehet a baj?</h3>
                             <i class="fas fa-plus"></i>
                         </div>
                         <div class="faq-answer">
                             <p>Ez több okból is előfordulhat: tönkrement akkumulátor, törött töltő, alaplapi hiba, vagy RAM probléma. Első lépésként próbáld meg másik töltővel (ha van), és ellenőrizd, hogy a töltő LED-je világít-e. Ha ezekkel sem indul be, hozd be diagnosztikára - mi megtaláljuk a pontos okot.</p>
                         </div>
                     </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Lassú a laptopom. Hogyan gyorsíthatom fel?</h3>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>A lassulás oka lehet túl sok futó program, kevés szabad tárhely, elavult illesztőprogramok, vagy akár hardverprobléma is. Javasoljuk az indítópult tisztítását, felesleges programok eltávolítását, a merevlemez töredezettségmentesítését és víruskeresés futtatását. Ha ezek nem segítenek, érdemes lehet SSD-re váltani vagy több RAM-ot beszerelni.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>A laptop kijelzője csíkos vagy vibrál. Mi a teendő?</h3>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Ez általában a kijelző saját hibája, vagy a kijelzőt a géppel összekötő kábel sérülése miatt fordul elő. Próbáld meg külső monitorhoz csatlakoztatni a laptopot. Ha külső monitoron a kép tiszta, akkor a kijelző vagy a kábel a hibás. Fontos lehet a kábel csatlakozójának ellenőrzése is.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Mennyibe kerül egy laptop akkumulátor cseréje?</h3>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Az akkumulátor csere ára függ a laptop típusától és az akkumulátor kapacitásától. Általánosságban 28.000 Ft-tól kezdődnek a cserék. Pontos árajánlatért hozd be a gépet, vagy add meg a pontos típusát, és mi utánajárunk.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Milyen garanciát vállalnak a laptop javításra?</h3>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Minden javításra 3-12 hónap garanciát vállalunk, a beépített alkatrésztől és a javítás jellegétől függően. Az alkatrészekre külön gyártói garancia is vonatkozhat. A pontos garanciaidőről minden javítás előtt tájékoztatunk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>A laptop nem kapcsol be. Mi lehet a baj?</h3>
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Ez több okból is előfordulhat: tönkrement akkumulátor, törött töltő, alaplapi hiba, vagy RAM probléma. Első lépésként próbáld meg másik töltővel (ha van), és ellenőrizd, hogy a töltő LED-je világít-e. Ha ezekkel sem indul be, hozd be diagnosztikára - mi megtaláljuk a pontos okot.</p>
+                </div>
+            </div>
                 </div>
             </div>
 
